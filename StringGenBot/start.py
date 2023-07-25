@@ -12,21 +12,27 @@ async def start(bot: Client, msg: Message):
     me2 = (await bot.get_me()).mention
     await bot.send_message(
         chat_id=msg.chat.id,
-        text=f"""
-مـࢪحبـًا عـزيـزي {msg.from_user.mention},
-أنـا مـخـصـص لاسـتخـࢪاج اެݪجـلـسات
-بـايـࢪوجࢪام أو تـيـࢪمـكس
-للبـدء في الاسـتـخࢪاج اضغط بدأ استـخࢪاج اެݪجـلـسة
+        text=f"""¤¦ اهلا بـك عزيـزي 
 
-[الـمـطـور](tg://user?id={OWNER_ID})""",
+¤¦ يمكنك استـخـراج التالـي
+
+¤¦ تيرمڪس تليثون للحسابات
+
+¤¦ تيرمـكـس تليثون للبوتـات
+
+¤¦ بايـروجـرام مـيوزك للحسابات
+
+¤¦ بايـروجـرام مـيوزك للبوتات
+
+¤¦ تم انشاء البوت بواسطة [المطور](https://t.me/ZzZ68Z)""",
         reply_markup=InlineKeyboardMarkup(
             [
                 [
-                    InlineKeyboardButton(text="بـدأ استـخـࢪاج اެݪجـلسة", callback_data="generate")
+                    InlineKeyboardButton(text="إضغط لبدا استخراج الكود", callback_data="generate")
                 ],
                 [
-                    InlineKeyboardButton("قناتي", url="https://t.me/Q1IIQ"),
-                    InlineKeyboardButton("الـمـطـور", user_id=OWNER_ID)
+                    InlineKeyboardButton("❣️ sᴏᴜʀᴄᴇ ❣️", url="https://t.me/Q1IIQ"),
+                    InlineKeyboardButton("🥀 ᴅᴇᴠᴇʟᴏᴩᴇʀ 🥀", user_id=OWNER_ID)
                 ]
             ]
         ),

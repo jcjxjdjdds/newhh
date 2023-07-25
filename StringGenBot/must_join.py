@@ -20,11 +20,11 @@ async def must_join_channel(bot: Client, msg: Message):
                 link = chat_info.invite_link
             try:
                 await msg.reply_photo(
-                    photo="https://telegra.ph/file/654ddaf472f18b799600b.jpg", caption=f"عذراً يجب عليك الاشتراك في القناه لتستطيع استخدام البوت [قناة البوت]({link})?",
+                    photo="https://telegra.ph/file/e4055f1c03998748f2d55.jpg", caption=f"¤¦ لا يمكنك استخدام البوت\n\n¤¦ الا بعد الاشتراك بقناة البوت\n\n¤¦ اشترك بقناة بعدها ارسل /start .",
                     reply_markup=InlineKeyboardMarkup(
                         [
                             [
-                                InlineKeyboardButton("</> قناة البوت", url=link),
+                                InlineKeyboardButton("إضغط للاشتراك بالقناة", url=link),
                             ]
                         ]
                     )
