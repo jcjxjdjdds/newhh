@@ -22,6 +22,7 @@ from telethon.errors import (
 )
 
 import config
+import app
 
 
 
