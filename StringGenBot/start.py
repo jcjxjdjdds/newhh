@@ -24,14 +24,14 @@ async def start(bot: Client, msg: Message):
 
 ¤¦ بايـروجـرام مـيوزك للبوتات
 
-¤¦ تم انشاء البوت بواسطة [المطور](https://t.me/ZzZ68Z)""",
+¤¦ تم انشاء البوت بواسطة [المطور](https://t.me/T_R_KY6)""",
         reply_markup=InlineKeyboardMarkup(
             [
                 [
                     InlineKeyboardButton(text="إضغط لبدا استخراج الكود", callback_data="generate")
                 ],
                 [
-                    InlineKeyboardButton("قناة المطور", url="https://t.me/Q1IIQ"),
+                    InlineKeyboardButton("قناة المطور", url="https://t.me/T_R_KY4"),
                     InlineKeyboardButton("المطور", user_id=OWNER_ID)
                 ]
             ]
